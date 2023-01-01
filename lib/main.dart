@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:noteshive/constants.dart';
 import 'package:noteshive/view/notes_view.dart';
 
-void main() {
+void main() async {
+  await Hive.initFlutter();
+  await Hive.openBox(kNoteBox);
   runApp(const NotesApp());
 }
 
@@ -10,11 +14,11 @@ class NotesApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.dark,
-            fontFamily: 'Poppins',
+        fontFamily: 'Poppins',
       ),
       home: const NotesView(),
     );
