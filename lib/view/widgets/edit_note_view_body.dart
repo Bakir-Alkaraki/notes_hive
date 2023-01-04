@@ -4,6 +4,7 @@ import 'package:noteshive/cubits/cubit/notes_cubit.dart';
 import 'package:noteshive/model/note_model.dart';
 
 import 'custom_textfield.dart';
+import 'edit_note_color_list.dart';
 import 'notes_view_appbar.dart';
 
 class EditNoteViewBody extends StatefulWidget {
@@ -57,6 +58,10 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
               content = value;
             },
           ),
+          const SizedBox(
+            height: 32,
+          ),
+          EditNoteColorList(note: widget.note,)
         ],
       ),
     );
