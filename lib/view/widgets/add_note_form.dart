@@ -6,6 +6,8 @@ import 'package:noteshive/model/note_model.dart';
 import 'package:noteshive/view/widgets/custom_button.dart';
 import 'package:noteshive/view/widgets/custom_textfield.dart';
 
+import 'colors_list_picker.dart';
+
 class AddNoteForm extends StatefulWidget {
   const AddNoteForm({Key? key}) : super(key: key);
 
@@ -48,6 +50,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
           const SizedBox(
             height: 32,
           ),
+          const ColorsList(),
           BlocBuilder<AddNoteCubit, AddNoteState>(
             builder: (context, state) {
               return CustomButton(
@@ -56,7 +59,8 @@ class _AddNoteFormState extends State<AddNoteForm> {
                   if (formState.currentState!.validate()) {
                     formState.currentState!.save();
 
-                    var formatDate = DateFormat('dd-mm-yyyy').format(DateTime.now());
+                    var formatDate =
+                        DateFormat('dd-mm-yyyy').format(DateTime.now());
 
                     var noteModel = NoteModel(
                         title: title!,
@@ -80,3 +84,4 @@ class _AddNoteFormState extends State<AddNoteForm> {
     );
   }
 }
+
